@@ -1,4 +1,3 @@
-
-const App = () => <h1>Triathlon Tracker</h1>
+const App = () => <h1>Triathlon Tracker</h1>;
 
 export default App;
