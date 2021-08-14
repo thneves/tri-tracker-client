@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-const Tracks = () => {
-  const [track, setTrack] = useState({
-    user_id: 1,
-    sport: '',
-    day: '',
-    distance: '',
-    moving_time: '',
-  });
+const Api = () => {
+  const checkLoginStatus = () => {
+    axios.get('http://localhost:3001/logged_in', { withCredentials: true })
+      .then(response => {
+        console.log('logged in?', response.data);
+      }).catch(error => {
+        console.log('login error', error);
+      });
+  };
+
+  const handleLogout = () => {
+    axios.delete('http://localhost:3001/logout', { withCredentials: true })
+      .then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log('logout error', error);
+      });
+  };
 
   const handleChange = e => {
     setTrack({
@@ -48,7 +57,7 @@ const Tracks = () => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmitTrack = e => {
     axios.post('http://localhost:3001/api/v1/tracks', {
       track: {
         user_id: track.user_id,
@@ -69,6 +78,7 @@ const Tracks = () => {
 
   return (
     <>
+      <h1>olá</h1>
       <h1>Testing API Requests</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" name="sport" placeholder="Sport" value={track.sport} onChange={handleChange} required />
@@ -90,5 +100,3 @@ const Tracks = () => {
     </>
   );
 };
-
-export default Tracks;
