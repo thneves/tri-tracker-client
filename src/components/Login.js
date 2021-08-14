@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
     registrationErrors: '',
   });
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = e => {
     axios.post('http://localhost:3001/sessions', {
@@ -25,7 +25,7 @@ const Login = () => {
     });
 
     e.preventDefault();
-    history.push('/dashboard');
+    // history.push('/');
   };
 
   const handleChange = e => {

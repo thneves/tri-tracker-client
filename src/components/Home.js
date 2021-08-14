@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import Login from './Login';
 import Register from './Register';
+import Tracks from './Tracks';
 
 const Home = () => {
   const checkLoginStatus = () => {
@@ -35,6 +36,11 @@ const Home = () => {
       <h2>Login Form</h2>
       <Login />
       <button type="button" onClick={() => handleLogout()}>Logout</button>
+      <br />
+      <br />
+      <button type="button" onClick={() => checkLoginStatus()}>Check Login Status</button>
+      <br />
+      <Tracks />
     </>
   );
 };
