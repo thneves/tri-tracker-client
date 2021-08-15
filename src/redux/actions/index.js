@@ -1,7 +1,10 @@
 import * as action from './actionTypes';
 
 export const registerRequest = () => ({ type: action.REGISTER_REQUEST });
-export const registerSuccess = register => ({ type: action.REGISTER_SUCCESS, payload: register });
+export const registerSuccess = user => ({
+  type: action.REGISTER_SUCCESS,
+  payload: user,
+});
 export const registerFailure = error => ({ type: action.REGISTER_FAILURE, payload: error });
 
 export const loginRequest = () => ({ type: action.LOGIN_REQUEST });

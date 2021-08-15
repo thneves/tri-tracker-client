@@ -1,47 +1,69 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { fetchRegistration } from '../redux/thunk/thunkPosts';
 
 const Register = () => {
-  const [user, setUser] = useState({
+  const [newUser, setNewUser] = useState({
     username: '',
     email: '',
     password: '',
     password_confirmation: '',
-    registrationErrors: '',
   });
 
   const handleSubmit = e => {
-    axios.post('http://localhost:3001/registrations', {
-      user: {
-        username: user.username,
-        email: user.email,
-        password: user.password,
-        password_confirmation: user.password_confirmation,
-      },
-    },
-    { withCredentials: true }).then(response => {
-      console.log('registration response', response);
-    }).catch(error => {
-      console.log('error', error);
-    });
+    fetchRegistration(
+      newUser.username,
+      newUser.email,
+      newUser.password,
+      newUser.password_confirmation,
+    );
 
     e.preventDefault();
   };
 
   const handleChange = e => {
-    setUser({
-      ...user,
+    setNewUser({
+      ...newUser,
       [e.target.name]: e.target.value,
     });
+    e.preventDefault();
+    console.log(newUser);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="username" name="username" placeholder="Username" value={user.username} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Your email" value={user.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Passsword" value={user.password} onChange={handleChange} required />
-        <input type="password" name="password_confirmation" placeholder="Passsword Confirmation" value={user.password_confirmation} onChange={handleChange} required />
+        <input
+          type="username"
+          name="username"
+          placeholder="Username"
+          value={newUser.username}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your email"
+          value={newUser.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Passsword"
+          value={newUser.password}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password_confirmation"
+          placeholder="Passsword Confirmation"
+          value={newUser.password_confirmation}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Register</button>
       </form>
     </div>
