@@ -7,7 +7,7 @@ const Tracks = () => {
 
   return (
     <>
-      <Logout /> 
+      <Logout />
       <h1>Display All Tracks Here</h1>
       <Navbar />
     </>

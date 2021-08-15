@@ -1,8 +1,9 @@
 import store from '../store';
-import { postLogin, postRegistration } from '../requests/apiPosts';
+import { postLogin, postRegistration, postTrack } from '../requests/apiPosts';
 import {
   registerRequest, registerFailure, registerSuccess,
   loginRequest, loginFailure, loginSuccess,
+  createTrackRequest, createTrackSuccess, createTrackFailure,
 }
   from '../actions';
 
@@ -29,4 +30,15 @@ const fetchLogin = (email, password) => {
     });
 };
 
-export { fetchRegistration, fetchLogin };
+const fetchCreateTrack = (userId, sport, day, distance, movingTime) => {
+  store.dispatch(createTrackRequest());
+  const requestCreateTrack = postTrack(userId, sport, day, distance, movingTime);
+  requestCreateTrack.then(track => {
+    store.dispatch(createTrackSuccess(track));
+  })
+    .catch(error => {
+      store.dispatch(createTrackFailure(error.message));
+    });
+};
+
+export { fetchRegistration, fetchLogin, fetchCreateTrack };

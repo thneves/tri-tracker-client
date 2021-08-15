@@ -35,4 +35,24 @@ const postLogin = async (email, password) => {
   throw Error(response.status);
 };
 
-export { postRegistration, postLogin };
+const postTrack = async (userId, sport, day, distance, movingTime) => {
+  const response = await axios.post('http://localhost:3001/api/v1/tracks', {
+    track: {
+      user_id: userId,
+      sport,
+      day,
+      distance,
+      moving_time: movingTime,
+    },
+  },
+  { withCredentials: true });
+
+  if (response.status === 200) {
+    const trackCreated = response.data.track;
+    return trackCreated;
+  }
+
+  throw Error(response.status);
+};
+
+export { postRegistration, postLogin, postTrack };
