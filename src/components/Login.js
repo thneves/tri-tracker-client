@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleSubmit = e => {
     fetchLogin(loginUser.email, loginUser.password);
-    history.push('/menu');
+    history.push('/dashboard');
     e.preventDefault();
   };
 

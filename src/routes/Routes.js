@@ -6,16 +6,16 @@ import Dashboard from '../components/Dashboard';
 import Home from '../components/Home';
 import Login from '../components/Login';
 import Register from '../components/Register';
-import Menu from '../components/Menu';
+import Tracks from '../components/Tracks';
 
 const Routes = () => (
   <Router>
     <Switch>
       <Route path="/" component={Home} exact />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/tracks" component={Tracks} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
-      <Route path="/menu" component={Menu} />
     </Switch>
   </Router>
 );
