@@ -1,45 +1,36 @@
 import React, { useState } from 'react';
+import { fetchLogin } from '../redux/thunk/thunkPosts';
 // import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 const Login = () => {
-  const [user, setUser] = useState({
+  const [loginUser, setLoginUser] = useState({
     email: '',
     password: '',
-    registrationErrors: '',
   });
 
   // const history = useHistory();
 
   const handleSubmit = e => {
-    axios.post('http://localhost:3001/sessions', {
-      user: {
-        email: user.email,
-        password: user.password,
-      },
-    },
-    { withCredentials: true }).then(response => {
-      console.log('login response', response);
-    }).catch(error => {
-      console.log('error', error);
-    });
-
-    e.preventDefault();
+    fetchLogin(loginUser.email, loginUser.password);
     // history.push('/');
+    e.preventDefault();
   };
 
   const handleChange = e => {
-    setUser({
-      ...user,
+    setLoginUser({
+      ...loginUser,
       [e.target.name]: e.target.value,
     });
+    e.preventDefault();
+    console.log(loginUser);
   };
 
   return (
     <div>
+      <h1>THIS IS THE LOGIN PAGE</h1>
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Your email" value={user.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Passsword" value={user.password} onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Your email" value={loginUser.email} onChange={handleChange} required />
+        <input type="password" name="password" placeholder="Passsword" value={loginUser.password} onChange={handleChange} required />
         <button type="submit">Login</button>
       </form>
     </div>

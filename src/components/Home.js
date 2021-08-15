@@ -1,6 +1,5 @@
 import React from 'react';
-import Login from './Login';
-import Register from './Register';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   console.log('oi');
@@ -8,8 +7,17 @@ const Home = () => {
   return (
     <>
       <h1>Tri Tracker</h1>
-      <Register />
-      <Login />
+      <Link to="/register">REGISTER</Link>
+      <Link to="/login">LOGIN</Link>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <h1>This is the home page</h1>
+      </div>
     </>
   );
 };

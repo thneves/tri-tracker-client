@@ -31,6 +31,7 @@ const Register = () => {
 
   return (
     <div>
+      <h1>THIS IS THE REGISTER PAGE</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="username"

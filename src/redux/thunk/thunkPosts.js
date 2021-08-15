@@ -1,6 +1,10 @@
 import store from '../store';
-import { postRegistration } from '../requests/apiPosts';
-import { registerRequest, registerFailure, registerSuccess } from '../actions';
+import { postLogin, postRegistration } from '../requests/apiPosts';
+import {
+  registerRequest, registerFailure, registerSuccess,
+  loginRequest, loginFailure, loginSuccess,
+}
+  from '../actions';
 
 const fetchRegistration = (username, email, password, passwordConfirmation) => {
   store.dispatch(registerRequest());
@@ -14,6 +18,15 @@ const fetchRegistration = (username, email, password, passwordConfirmation) => {
     });
 };
 
-const fetchLogin = () => { console.log('oi'); };
+const fetchLogin = (email, password) => {
+  store.dispatch(loginRequest());
+  const requestLogin = postLogin(email, password);
+  requestLogin.then(user => {
+    store.dispatch(loginSuccess(user));
+  })
+    .catch(error => {
+      store.dispatch(loginFailure(error.message));
+    });
+};
 
 export { fetchRegistration, fetchLogin };

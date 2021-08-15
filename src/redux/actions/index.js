@@ -8,7 +8,7 @@ export const registerSuccess = user => ({
 export const registerFailure = error => ({ type: action.REGISTER_FAILURE, payload: error });
 
 export const loginRequest = () => ({ type: action.LOGIN_REQUEST });
-export const loginSuccess = login => ({ type: action.LOGIN_SUCCESS, payload: login });
+export const loginSuccess = user => ({ type: action.LOGIN_SUCCESS, payload: user });
 export const loginFailure = error => ({ type: action.LOGIN_FAILURE, payload: error });
 
 export const logoutRequest = () => ({ type: action.LOGOUT_REQUEST });
