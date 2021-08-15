@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { fetchLogin } from '../redux/thunk/thunkPosts';
-// import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState({
@@ -8,11 +8,11 @@ const Login = () => {
     password: '',
   });
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleSubmit = e => {
     fetchLogin(loginUser.email, loginUser.password);
-    // history.push('/');
+    history.push('/menu');
     e.preventDefault();
   };
 
