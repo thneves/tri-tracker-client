@@ -1,0 +1,26 @@
+.navbar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  .nav-item {
+    padding: 3rem;
+    width: 100%;
+    background-color: var(--base-color);
+    font-family: 'Helvetica Neue', sans-serif;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+
+    img {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}
