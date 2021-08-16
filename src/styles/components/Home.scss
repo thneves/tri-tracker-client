@@ -1,0 +1,60 @@
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  height: 8vh;
+
+  h1 {
+    color: white;
+    letter-spacing: 6px;
+    font-size: 1.5rem;
+  }
+
+  .buttons-div {
+    display: flex;
+    gap: 2rem;
+
+    .home-btn {
+      padding: 0.5rem;
+      border: 2px solid white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-variant: small-caps;
+      color: white;
+    }
+
+    .register-btn {
+      background-color: var(--base-color);
+      transition: 0.8s;
+
+      &:hover {
+        background-color: #101b20;
+      }
+    }
+
+    .login-btn {
+      background-color: var(--secondary-color);
+      transition: 0.8s;
+
+      &:hover {
+        background-color: #36c73e;
+      }
+    }
+  }
+}
+
+.hero-main {
+  padding: 2rem;
+  height: 50vh;
+}
+
+.hero-p {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  color: var(--base-color);
+}
