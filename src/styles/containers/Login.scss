@@ -83,4 +83,8 @@
   position: absolute;
   top: 3%;
   left: 3%;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
 }

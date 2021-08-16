@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { fetchAllTracks } from '../redux/thunk/thunkGet';
 import Navbar from './Navbar';
-import Logout from './Logout';
+import Logout from '../containers/Logout';
 
 const Tracks = () => {
   useEffect(() => {

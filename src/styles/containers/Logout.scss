@@ -1,0 +1,33 @@
+.logout-header {
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  padding: 1.5rem;
+
+  h1 {
+    color: white;
+    letter-spacing: 6px;
+    font-size: 1.5rem;
+  }
+
+  .logout-btn {
+    padding: 0.5rem;
+    border: 2px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-variant: small-caps;
+    color: white;
+    transition: 0.8s;
+    background-color: var(--base-color);
+
+    &:hover {
+      background-color: #101b20;
+      cursor: pointer;
+    }
+  }
+}

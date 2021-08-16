@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { fetchLogin } from '../redux/thunk/thunkPosts';
 import LoginImg from '../assets/images/login.png';
-import '../styles/components/Login.scss';
+import '../styles/containers/Login.scss';
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState({

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { fetchCreateTrack } from '../redux/thunk/thunkPosts';
-import Logout from './Logout';
+import Logout from '../containers/Logout';
 import Navbar from './Navbar';
 
 const Dashboard = () => {
