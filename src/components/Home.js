@@ -17,7 +17,7 @@ const Home = () => {
       </header>
       <main>
         <img className="hero-main" src={Running} alt="hero logo" />
-        <p className="hero-p">We help you to achieve your triatlhon goals.</p>
+        <p className="hero-p">We help you to achieve your goals.</p>
       </main>
     </>
   );

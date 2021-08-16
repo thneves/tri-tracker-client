@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { fetchLogin } from '../redux/thunk/thunkPosts';
+import LoginImg from '../assets/images/login.png';
+import '../styles/components/Login.scss';
 
 const Login = () => {
   const [loginUser, setLoginUser] = useState({
@@ -26,14 +30,19 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>THIS IS THE LOGIN PAGE</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Your email" value={loginUser.email} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Passsword" value={loginUser.password} onChange={handleChange} required />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <>
+      <Link to="/" className="back-icon"><FontAwesomeIcon icon={faArrowCircleLeft}>Back</FontAwesomeIcon></Link>
+      <div className="login-div">
+        <div className="login-triangle" />
+        <h2 className="login-header">Log In</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <p className="login-p"><input className="login-input" type="email" name="email" placeholder="Email" value={loginUser.email} onChange={handleChange} required /></p>
+          <p className="login-p"><input className="login-input" type="password" name="password" placeholder="Passsword" value={loginUser.password} onChange={handleChange} required /></p>
+          <button className="login-btn" type="submit">Start</button>
+        </form>
+      </div>
+      <img className="login-img" src={LoginImg} alt="rise" />
+    </>
   );
 };
 
