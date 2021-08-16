@@ -6,7 +6,7 @@ import Dashboard from '../containers/Dashboard';
 import Home from '../components/Home';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
-import Tracks from '../components/Tracks';
+import Tracks from '../containers/Tracks';
 
 const Routes = () => (
   <Router>
