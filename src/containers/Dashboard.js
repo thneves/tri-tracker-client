@@ -65,12 +65,12 @@ const Dashboard = () => {
               </label>
               <label className="label-distance" htmlFor="distance">
                 Distance
-                <input type="number" min={0} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
+                <input type="number" min={1} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
                 km
               </label>
               <label className="label-time" htmlFor="moving_time">
                 Moving Time
-                <input type="number" min={0} name="moving_time" placeholder="Moving Time" value={newTrack.moving_time} onChange={handleChange} required />
+                <input type="number" min={1} name="moving_time" placeholder="Moving Time" value={newTrack.moving_time} onChange={handleChange} required />
               </label>
             </div>
             <button className="track-btn" type="submit">Add Training</button>

@@ -5,6 +5,7 @@ import dateFormat from '../helpers/dates';
 import converSec from '../helpers/convertSec';
 import Navbar from './Navbar';
 import Logout from '../containers/Logout';
+import paceCalculator from '../helpers/pace';
 
 const Tracks = () => {
   const allTracks = useSelector(state => state.allTracks.tracks);
@@ -17,7 +18,21 @@ const Tracks = () => {
         <span>{track.sport}</span>
         <span>
           Time:
+          {' '}
           {converSec(track.moving_time)}
+        </span>
+        <span>
+          Distance:
+          {' '}
+          {track.distance}
+          {' '}
+          km
+        </span>
+        <span>
+          Pace:
+          {' '}
+          {paceCalculator(track.distance, track.moving_time)}
+          m/km
         </span>
       </div>
     ));

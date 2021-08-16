@@ -34,7 +34,7 @@ const dateFormat = day => {
   const dayIndex = d.getDay();
   const dayName = days[dayIndex];
 
-  const formatted = `${dayName}, ${date}, ${monthName}, ${year}`;
+  const formatted = `${dayName}, ${date} ${monthName} ${year}`;
 
   return formatted;
 };
