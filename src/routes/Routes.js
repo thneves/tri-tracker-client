@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import Dashboard from '../containers/Dashboard';
 import Home from '../components/Home';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
