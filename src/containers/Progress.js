@@ -9,7 +9,6 @@ import '../styles/components/Progress.scss';
 
 const Progress = () => {
   const allTracks = useSelector(state => state.allTracks.tracks);
-  const username = useSelector(state => state.login.user.username);
   const dateArray = [];
   let onlyDates = [];
 
@@ -48,7 +47,7 @@ const Progress = () => {
 
   return (
     <div className="container">
-      <Logout username={username} />
+      <Logout text="Keep it up!" />
       <div className="progress-div">
         <h1>Chart test</h1>
         <Chart

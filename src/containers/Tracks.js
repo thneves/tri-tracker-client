@@ -8,7 +8,6 @@ import '../styles/containers/Tracks.scss';
 
 const Tracks = () => {
   const allTracks = useSelector(state => state.allTracks.tracks);
-  const username = useSelector(state => state.login.user.username);
   let printTracks;
 
   if (allTracks.length > 0) {
@@ -31,7 +30,7 @@ const Tracks = () => {
 
   return (
     <div className="container">
-      <Logout username={username} />
+      <Logout text="Well done!" />
       <h3>All Trainings</h3>
       <div className="tracks-div">
         { printTracks }

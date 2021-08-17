@@ -8,6 +8,7 @@ import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Tracks from '../containers/Tracks';
 import Progress from '../containers/Progress';
+import More from '../components/More';
 
 const Routes = () => (
   <Router>
@@ -18,6 +19,7 @@ const Routes = () => (
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/progress" component={Progress} />
+      <Route path="/more" component={More} />
     </Switch>
   </Router>
 );

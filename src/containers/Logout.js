@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { fetchLogout } from '../redux/thunk/thunkDelete';
 import '../styles/containers/Logout.scss';
 
-const Logout = ({ username }) => {
+const Logout = ({ text }) => {
   const history = useHistory();
 
   const handleLogout = () => {
@@ -17,10 +17,7 @@ const Logout = ({ username }) => {
       <h1>Tri Tracker</h1>
       <div>
         <h2>
-          Greetings,
-          {' '}
-          {username}
-          !
+          {text}
         </h2>
         <button className="logout-btn" type="button" onClick={handleLogout}>Logout</button>
       </div>
@@ -29,7 +26,7 @@ const Logout = ({ username }) => {
 };
 
 Logout.propTypes = {
-  username: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Logout;

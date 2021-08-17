@@ -59,7 +59,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Logout username={username} />
+      <Logout text={`Greetings, ${username}`} />
       <div className="dash-div">
         <h2 className="dash-head">Add your last training results</h2>
         <div className="form-div">
