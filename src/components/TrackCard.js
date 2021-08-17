@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
 import paceCalculator from '../helpers/pace';
 import dateFormat from '../helpers/dates';
-import converSec from '../helpers/convertSec';
+import { converSec } from '../helpers/convertSec';
 import '../styles/components/TrackCard.scss';
 
 const TrackCard = ({
-  key, day, sport, distance, movingTime,
+  day, sport, distance, movingTime,
 }) => {
   let Icon;
   if (sport === 'swim') {
@@ -20,7 +20,7 @@ const TrackCard = ({
   }
 
   return (
-    <div className="track-card" key={key}>
+    <div className="track-card">
       <FontAwesomeIcon className="sport-icon-card" icon={Icon}>sport</FontAwesomeIcon>
       <h3 className="card-date">{dateFormat(day)}</h3>
       <div className="card-span-div">
@@ -49,7 +49,6 @@ const TrackCard = ({
 };
 
 TrackCard.propTypes = {
-  key: PropTypes.number.isRequired,
   day: PropTypes.string.isRequired,
   sport: PropTypes.string.isRequired,
   distance: PropTypes.number.isRequired,

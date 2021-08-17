@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
 import { fetchCreateTrack } from '../redux/thunk/thunkPosts';
+import { convertMin } from '../helpers/convertSec';
 import Logout from './Logout';
 import Navbar from '../components/Navbar';
 import '../styles/containers/Dashboard.scss';
@@ -16,7 +17,9 @@ const Dashboard = () => {
     sport: '',
     day: '',
     distance: 0,
-    moving_time: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
 
   useEffect(() => {
@@ -30,14 +33,21 @@ const Dashboard = () => {
   }
 
   const handleSubmitTrack = e => {
+    const movingTime = convertMin(newTrack.hours, newTrack.minutes, newTrack.seconds);
     fetchCreateTrack(
       userId,
       newTrack.sport,
       newTrack.day,
       newTrack.distance,
-      newTrack.moving_time,
+      movingTime,
     );
     e.preventDefault();
+    setNewTrack({
+      sport: '',
+      day: '',
+      distance: 0,
+      moving_time: 0,
+    });
   };
 
   const handleChange = e => {
@@ -79,8 +89,12 @@ const Dashboard = () => {
                 km
               </label>
               <label className="label-time" htmlFor="moving_time">
-                Moving Time
-                <input type="number" min={1} name="moving_time" placeholder="Moving Time" value={newTrack.moving_time} onChange={handleChange} required />
+                HH:
+                <input type="number" min={0} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
+                MM:
+                <input type="number" min={1} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
+                SS:
+                <input type="number" min={1} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
               </label>
             </div>
             <button className="track-btn" type="submit">Add Training</button>

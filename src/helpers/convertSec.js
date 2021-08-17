@@ -13,4 +13,17 @@ const converSec = time => {
   return result;
 };
 
-export default converSec;
+const convertMin = (h, m, s) => {
+  const hour = Number(h);
+  const min = Number(m);
+  const sec1 = Number(s);
+
+  const sec2 = hour * 3600;
+  const sec3 = min * 60;
+
+  const result = sec1 + sec2 + sec3;
+
+  return result;
+};
+
+export { converSec, convertMin };
