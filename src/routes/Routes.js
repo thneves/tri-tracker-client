@@ -7,6 +7,7 @@ import Home from '../components/Home';
 import Login from '../containers/Login';
 import Register from '../containers/Register';
 import Tracks from '../containers/Tracks';
+import Progress from '../components/Progress';
 
 const Routes = () => (
   <Router>
@@ -16,6 +17,7 @@ const Routes = () => (
       <Route path="/tracks" component={Tracks} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
+      <Route path="/progress" component={Progress} />
     </Switch>
   </Router>
 );

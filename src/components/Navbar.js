@@ -18,7 +18,7 @@ const Navbar = () => (
         <img src={TracksIcon} alt="tracks icon" />
       </Link>
       <Link className="nav-item" to="/progress">
-        Progress
+        Stats
         <img src={ProgressIcon} alt="progress icon" />
       </Link>
       <Link className="nav-item" to="/more">

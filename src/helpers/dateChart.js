@@ -2,7 +2,6 @@ const dateFormat = day => {
   const d = new Date(day);
 
   const year = d.getFullYear();
-  const date = d.getDate();
 
   const months = [
     'January',
@@ -19,23 +18,11 @@ const dateFormat = day => {
     'December',
   ];
 
-  const days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
-
   const monthIndex = d.getMonth();
   const monthName = months[monthIndex];
-  const dayIndex = d.getDay();
-  const dayName = days[dayIndex];
 
-  const formatted = `${dayName}, ${date} ${monthName} ${year}`;
-  console.log(`${monthName} ${year}`);
+  const formatted = `${monthName} ${year}`;
+
   return formatted;
 };
 

@@ -6,7 +6,7 @@
   justify-content: space-evenly;
 
   .nav-item {
-    padding: 3rem;
+    padding: 1.2rem 1rem 0.5rem 1rem;
     width: 100%;
     background-color: var(--base-color);
     font-family: 'Helvetica Neue', sans-serif;
@@ -19,8 +19,8 @@
     gap: 0.3rem;
 
     img {
-      width: 64px;
-      height: 64px;
+      width: 46px;
+      height: 46px;
     }
   }
 }

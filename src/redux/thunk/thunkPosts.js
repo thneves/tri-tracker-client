@@ -14,7 +14,6 @@ const fetchRegistration = (username, email, password, passwordConfirmation) => {
     store.dispatch(registerSuccess(user));
   })
     .catch(error => {
-      console.log(error);
       store.dispatch(registerFailure(error.message));
     });
 };

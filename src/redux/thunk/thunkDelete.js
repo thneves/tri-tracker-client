@@ -6,7 +6,6 @@ const fetchLogout = () => {
   store.dispatch(logoutRequest());
   /* eslint-disable camelcase */
   const requestLogout = deleteSession();
-  console.log(requestLogout);
   requestLogout.then(logged_out => {
     store.dispatch(logoutSuccess(logged_out));
   })
