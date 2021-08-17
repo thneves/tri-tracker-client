@@ -3,10 +3,9 @@ import React from 'react';
 const Api = () => {
   const checkLoginStatus = () => {
     axios.get('http://localhost:3001/logged_in', { withCredentials: true })
-      .then(response => {
-        console.log('logged in?', response.data);
-      }).catch(error => {
+      .then(response => response.data).catch(error => {
         console.log('login error', error);
+        return false;
       });
   };
 

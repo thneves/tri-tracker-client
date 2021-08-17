@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
@@ -6,10 +6,12 @@ import { fetchCreateTrack } from '../redux/thunk/thunkPosts';
 import Logout from './Logout';
 import Navbar from '../components/Navbar';
 import '../styles/containers/Dashboard.scss';
+import Loader from '../components/Loader';
 
 const Dashboard = () => {
   const userId = useSelector(state => state.login.user.id);
-  console.log(userId);
+  const username = useSelector(state => state.login.user.username);
+  const [loading, setLoading] = useState(true);
   const [newTrack, setNewTrack] = useState({
     sport: '',
     day: '',
@@ -17,18 +19,19 @@ const Dashboard = () => {
     moving_time: 0,
   });
 
-  const handleChange = e => {
-    setNewTrack({
-      ...newTrack,
-      [e.target.name]: e.target.value,
-    });
-    console.log(e.target.value);
-    console.log(newTrack);
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   const handleSubmitTrack = e => {
     fetchCreateTrack(
-      newTrack.userId,
+      userId,
       newTrack.sport,
       newTrack.day,
       newTrack.distance,
@@ -37,9 +40,16 @@ const Dashboard = () => {
     e.preventDefault();
   };
 
+  const handleChange = e => {
+    setNewTrack({
+      ...newTrack,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
-      <Logout />
+      <Logout username={username} />
       <div className="dash-div">
         <h2 className="dash-head">Add your last training results</h2>
         <div className="form-div">
