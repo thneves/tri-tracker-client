@@ -9,7 +9,7 @@ const paceCalculator = (km, time) => {
   console.log(`hours: ${hours}`);
   console.log(`minutes ${minutes}`);
 
-  const pace = (minutes / kms).toFixed(2);
+  const pace = (minutes / kms).toFixed(2).toString().replace('.', ':');
 
   return pace;
 };
