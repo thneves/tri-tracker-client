@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { fetchLogin } from '../redux/thunk/thunkPosts';
@@ -26,7 +26,6 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
     e.preventDefault();
-    console.log(loginUser);
   };
 
   return (

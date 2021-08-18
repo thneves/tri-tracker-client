@@ -3,6 +3,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTy
 const initialState = {
   loading: false,
   user: {},
+  valid: false,
   error: '',
 };
 
@@ -15,6 +16,7 @@ const login = (state = initialState, action) => {
         ...state,
         loading: false,
         user: action.payload,
+        valid: action.valid,
         error: '',
       };
     case LOGIN_FAILURE:
@@ -22,6 +24,7 @@ const login = (state = initialState, action) => {
         ...state,
         loading: false,
         user: {},
+        valid: false,
         error: action.payload,
       };
     default:

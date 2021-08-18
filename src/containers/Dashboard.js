@@ -10,8 +10,7 @@ import '../styles/containers/Dashboard.scss';
 import Loader from '../components/Loader';
 
 const Dashboard = () => {
-  const userId = useSelector(state => state.login.user.id);
-  const username = useSelector(state => state.login.user.username);
+  const userId = useSelector(state => state.login.user);
   const [loading, setLoading] = useState(true);
   const [newTrack, setNewTrack] = useState({
     sport: '',
@@ -25,7 +24,7 @@ const Dashboard = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   if (loading) {
@@ -35,7 +34,7 @@ const Dashboard = () => {
   const handleSubmitTrack = e => {
     const movingTime = convertMin(newTrack.hours, newTrack.minutes, newTrack.seconds);
     fetchCreateTrack(
-      userId,
+      userId.id,
       newTrack.sport,
       newTrack.day,
       newTrack.distance,
@@ -59,7 +58,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Logout text={`Greetings, ${username}`} />
+      <Logout text="Greetings!" />
       <div className="dash-div">
         <h2 className="dash-head">Add your last training results</h2>
         <div className="form-div">
@@ -85,16 +84,16 @@ const Dashboard = () => {
               </label>
               <label className="label-distance" htmlFor="distance">
                 Distance
-                <input type="number" min={1} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
+                <input type="number" min={-1} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
                 km
               </label>
               <label className="label-time" htmlFor="moving_time">
                 HH:
-                <input type="number" min={0} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
+                <input type="number" min={-1} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
                 MM:
-                <input type="number" min={1} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
+                <input type="number" min={-1} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
                 SS:
-                <input type="number" min={1} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
+                <input type="number" min={-1} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
               </label>
             </div>
             <button className="track-btn" type="submit">Add Training</button>

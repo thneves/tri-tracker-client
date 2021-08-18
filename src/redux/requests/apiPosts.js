@@ -28,7 +28,7 @@ const postLogin = async (email, password) => {
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const loggedUser = response.data.user;
+    const loggedUser = [response.data.user, response.data.logged_in];
     return loggedUser;
   }
 

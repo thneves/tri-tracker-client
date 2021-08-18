@@ -1,6 +1,9 @@
 import store from '../store';
-import { getTracks } from '../requests/apiGet';
-import { allTracksRequest, allTracksSuccess, allTracksFailure } from '../actions';
+import { getLoggedUser, getTracks } from '../requests/apiGet';
+import {
+  allTracksRequest, allTracksSuccess, allTracksFailure,
+  isLoggedRequest, isLoggedSuccess, isLoggedFailure,
+} from '../actions';
 
 const fetchAllTracks = () => {
   store.dispatch(allTracksRequest());
@@ -13,6 +16,16 @@ const fetchAllTracks = () => {
     });
 };
 
-const fetchOneTrack = () => console.log('oi');
+const fetchLoggedUser = () => {
+  store.dispatch(isLoggedRequest());
+  const requestLoggedUser = getLoggedUser();
+  requestLoggedUser.then(logged_in => { // eslint-disable-line camelcase
+    console.log(logged_in);
+    store.dispatch(isLoggedSuccess(logged_in));
+  })
+    .catch(error => {
+      store.dispatch(isLoggedFailure(error.message));
+    });
+};
 
-export { fetchAllTracks, fetchOneTrack };
+export { fetchAllTracks, fetchLoggedUser };
