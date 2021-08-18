@@ -39,12 +39,6 @@ const Progress = () => {
     fetchAllTracks();
   }, [fetchAllTracks]);
 
-  console.log(onlyDates);
-  console.log(dateArray);
-  console.log(runningLabel);
-  console.log(swimLabel);
-  console.log(cyclingLabel);
-
   return (
     <div className="container">
       <Logout text="Keep it up!" />

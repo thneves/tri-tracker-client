@@ -31,7 +31,6 @@ const Register = () => {
       [e.target.name]: e.target.value,
     });
     e.preventDefault();
-    console.log(newUser);
   };
 
   return (

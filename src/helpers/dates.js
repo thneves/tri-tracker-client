@@ -35,7 +35,6 @@ const dateFormat = day => {
   const dayName = days[dayIndex];
 
   const formatted = `${dayName}, ${date} ${monthName} ${year}`;
-  console.log(`${monthName} ${year}`);
   return formatted;
 };
 

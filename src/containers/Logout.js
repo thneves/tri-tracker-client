@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import { fetchLogout } from '../redux/thunk/thunkDelete';
+import fetchLogout from '../redux/thunk/thunkDelete';
 import '../styles/containers/Logout.scss';
 
 const Logout = ({ text }) => {

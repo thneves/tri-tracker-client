@@ -19,18 +19,14 @@ const fetchRegistration = (username, email, password, passwordConfirmation) => {
 };
 
 const fetchLogin = (email, password) => {
-  let isValid;
   store.dispatch(loginRequest());
   const requestLogin = postLogin(email, password);
   requestLogin.then(user => {
     store.dispatch(loginSuccess(user[0], user[1]));
-    isValid = user[0]; // eslint-disable-line prefer-destructuring
-    console.log(user[1]);
   })
     .catch(error => {
       store.dispatch(loginFailure(error.message));
     });
-  console.log(isValid);
 };
 
 const fetchCreateTrack = (userId, sport, day, distance, movingTime) => {

@@ -1,5 +1,5 @@
 import store from '../store';
-import { deleteSession } from '../requests/apiDelete';
+import deleteSession from '../requests/apiDelete';
 import { logoutRequest, logoutSuccess, logoutFailure } from '../actions';
 
 const fetchLogout = () => {
@@ -14,6 +14,4 @@ const fetchLogout = () => {
     });
 };
 
-const fetchDeleteTrack = () => console.log('oi');
-
-export { fetchLogout, fetchDeleteTrack };
+export default fetchLogout;

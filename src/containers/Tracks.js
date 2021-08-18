@@ -22,8 +22,6 @@ const Tracks = () => {
     ));
   }
 
-  console.log(allTracks);
-
   useEffect(() => {
     fetchAllTracks();
   }, [fetchAllTracks]);

@@ -20,7 +20,6 @@ const fetchLoggedUser = () => {
   store.dispatch(isLoggedRequest());
   const requestLoggedUser = getLoggedUser();
   requestLoggedUser.then(logged_in => { // eslint-disable-line camelcase
-    console.log(logged_in);
     store.dispatch(isLoggedSuccess(logged_in));
   })
     .catch(error => {
