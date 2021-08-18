@@ -1,0 +1,111 @@
+.dash-div {
+  background-color: var(--second-base-color);
+  height: 100%;
+  font-family: 'Helvetica', sans-serif;
+
+  .dash-head {
+    background-color: white;
+    padding: 1rem 0;
+    margin: 0 auto;
+  }
+
+  .form-div {
+    padding: 1rem 0;
+    font-family: 'Helvetica', sans-serif;
+
+    .dash-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      width: 300px;
+
+      .input-labels {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .label-day,
+        .label-distance,
+        .label-time {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          font-weight: 300;
+          padding: 1rem 0;
+
+          input {
+            font-size: 0.9rem;
+            width: 100%;
+            padding: 0.3rem;
+          }
+        }
+
+        .label-distance {
+          input {
+            width: 20%;
+          }
+        }
+
+        .label-time {
+          gap: 0.5rem;
+
+          input {
+            width: 14%;
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .track-btn {
+        padding: 1rem 0;
+        background-color: var(--secondary-color);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 1.3rem;
+        font-variant: small-caps;
+        letter-spacing: 0.5px;
+        font-weight: 300;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: green;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form-radios {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      .radio-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--primary-color);
+        padding-top: 0.5rem;
+        border: 1px solid white;
+        border-radius: 5px;
+        width: 30%;
+
+        .sport-icon {
+          font-size: 3rem;
+          color: var(--second-base-color);
+        }
+
+        .radio-input {
+          height: 1.2rem;
+          width: 1.2rem;
+          border-radius: 50%;
+          margin-bottom: 0.4rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

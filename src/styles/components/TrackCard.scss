@@ -1,0 +1,36 @@
+.track-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: 0.2rem auto;
+  border: 2px solid var(--primary-color);
+  background-color: azure;
+
+  .sport-icon-card {
+    font-size: 3rem;
+    color: var(--primary-color);
+    padding: 1rem;
+    width: 10%;
+  }
+
+  .card-date {
+    font-size: 1rem;
+    font-family: 'Helvetica', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--base-color);
+  }
+
+  .card-span-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      margin-right: 1rem;
+      font-size: 0.85rem;
+      color: var(--base-color);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.container {
+  height: 100vh;
+
+  h3 {
+    font-family: 'Helvetica', sans-serif;
+    color: var(--base-color);
+  }
+}
+
+.tracks-div {
+  display: block;
+  overflow: scroll;
+  height: 400px;
+  background-color: var(--second-base-color);
+  position: relative;
+}
