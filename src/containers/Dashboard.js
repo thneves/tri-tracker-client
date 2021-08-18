@@ -60,7 +60,7 @@ const Dashboard = () => {
     <>
       <Logout text="Greetings!" />
       <div className="dash-div">
-        <h2 className="dash-head">Add your last training results</h2>
+        <h3 className="dash-head">Add your last training results</h3>
         <div className="form-div">
           <form className="dash-form" onSubmit={handleSubmitTrack}>
             <label className="form-radios" htmlFor="sport" required>

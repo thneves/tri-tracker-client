@@ -14,7 +14,7 @@ const options = {
     },
     title: {
       display: true,
-      text: 'All time activities number',
+      text: 'Number of activities in each month',
     },
   },
 };

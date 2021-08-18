@@ -49,7 +49,7 @@ const Progress = () => {
     <div className="container">
       <Logout text="Keep it up!" />
       <div className="progress-div">
-        <h1>Chart test</h1>
+        <h3>Your progress</h3>
         <Chart
           months={onlyDates}
           runnings={runningLabel}
