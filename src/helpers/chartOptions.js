@@ -17,6 +17,7 @@ const options = {
       text: 'Number of activities in each month',
     },
   },
+  maintainAspectRatio: false,
 };
 
 export default options;

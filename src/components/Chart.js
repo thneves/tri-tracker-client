@@ -50,6 +50,8 @@ const Chart = ({
     <Bar
       data={data}
       options={options}
+      height={80}
+      width={160}
     />
   );
 };
