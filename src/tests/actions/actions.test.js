@@ -1,9 +1,11 @@
 import configureStore from 'redux-mock-store';
 import {
-  ALL_TRACKS_REQUEST, ALL_TRACKS_SUCCESS, ALL_TRACKS_FAILURE, CREATE_TRACK_REQUEST, CREATE_TRACK_SUCCESS, CREATE_TRACK_FAILURE,
+  ALL_TRACKS_REQUEST, ALL_TRACKS_SUCCESS, ALL_TRACKS_FAILURE,
+  CREATE_TRACK_REQUEST, CREATE_TRACK_SUCCESS, CREATE_TRACK_FAILURE,
 } from '../../redux/actions/actionTypes';
 import {
-  allTracksRequest, allTracksSuccess, allTracksFailure, createTrackRequest, createTrackSuccess, createTrackFailure,
+  allTracksRequest, allTracksSuccess, allTracksFailure,
+  createTrackRequest, createTrackSuccess, createTrackFailure,
 } from '../../redux/actions';
 import { initialState } from '../../redux/reducers/allTracks';
 

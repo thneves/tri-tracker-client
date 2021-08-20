@@ -21,4 +21,3 @@ it('Should render the TrackCard component', () => {
     ).toJSON();
   expect(card).toMatchSnapshot();
 });
-

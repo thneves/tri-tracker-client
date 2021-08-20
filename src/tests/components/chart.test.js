@@ -10,13 +10,13 @@ const cyclings = [2, 2, 2];
 it('Should render the Chart component', () => {
   const chart = renderer
     .create(
-      <Chart 
+      <Chart
         months={months}
         runnings={runs}
         swimmings={swims}
         cyclings={cyclings}
-      />
+      />,
     ).toJSON();
-  
+
   expect(chart).toMatchSnapshot();
-})
+});

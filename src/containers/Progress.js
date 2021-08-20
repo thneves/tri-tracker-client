@@ -12,8 +12,13 @@ const Progress = () => {
   const dateArray = [];
   let onlyDates = [];
 
-  if (allTracks.length > 0) { allTracks.map(track => onlyDates.push(dateFormatForChart(track.day))); }
-  if (allTracks.length > 0) { allTracks.map(track => dateArray.push([dateFormatForChart(track.day), track.sport])); } // eslint-disable-line max-len
+  if (allTracks.length > 0) {
+    allTracks.map(track => onlyDates.push(dateFormatForChart(track.day)));
+  }
+
+  if (allTracks.length > 0) {
+    allTracks.map(track => dateArray.push([dateFormatForChart(track.day), track.sport]));
+  } // eslint-disable-line max-len
 
   onlyDates = onlyDates.filter((item, index) => onlyDates.indexOf(item) === index);
   const runningLabel = new Array(onlyDates.length).fill(0);
