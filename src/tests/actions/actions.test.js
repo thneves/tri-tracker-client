@@ -1,6 +1,10 @@
 import configureStore from 'redux-mock-store';
-import { ALL_TRACKS_REQUEST, ALL_TRACKS_SUCCESS, ALL_TRACKS_FAILURE, CREATE_TRACK_REQUEST, CREATE_TRACK_SUCCESS, CREATE_TRACK_FAILURE } from '../../redux/actions/actionTypes';
-import { allTracksRequest, allTracksSuccess, allTracksFailure, createTrackRequest, createTrackSuccess, createTrackFailure } from '../../redux/actions';
+import {
+  ALL_TRACKS_REQUEST, ALL_TRACKS_SUCCESS, ALL_TRACKS_FAILURE, CREATE_TRACK_REQUEST, CREATE_TRACK_SUCCESS, CREATE_TRACK_FAILURE,
+} from '../../redux/actions/actionTypes';
+import {
+  allTracksRequest, allTracksSuccess, allTracksFailure, createTrackRequest, createTrackSuccess, createTrackFailure,
+} from '../../redux/actions';
 import { initialState } from '../../redux/reducers/allTracks';
 
 const middlewares = [];
@@ -23,7 +27,7 @@ describe('All tracks actions', () => {
     const actions = store.getActions();
     const expectedPayload = { type: ALL_TRACKS_SUCCESS };
     expect(actions).toEqual([expectedPayload]);
-  })
+  });
 
   it('should handle tracks failure request action', () => {
     const store = mockStore(initialState);
@@ -32,7 +36,7 @@ describe('All tracks actions', () => {
     const actions = store.getActions();
     const expectedPayload = { type: ALL_TRACKS_FAILURE };
     expect(actions).toEqual([expectedPayload]);
-  })
+  });
 });
 
 describe('create new track actions', () => {
@@ -47,29 +51,25 @@ describe('create new track actions', () => {
     store.dispatch(createTrackRequest());
 
     const actions = store.getActions();
-    const expectedPayload = { type: CREATE_TRACK_REQUEST};
+    const expectedPayload = { type: CREATE_TRACK_REQUEST };
     expect(actions).toEqual([expectedPayload]);
-  })
+  });
 
   it('should handle create track request sucess action', () => {
     const store = mockStore(createTrackState);
     store.dispatch(createTrackSuccess());
 
     const actions = store.getActions();
-    const expectedPayload = { type: CREATE_TRACK_SUCCESS};
+    const expectedPayload = { type: CREATE_TRACK_SUCCESS };
     expect(actions).toEqual([expectedPayload]);
-  })
+  });
 
   it('should handle create track request failure action', () => {
     const store = mockStore(createTrackState);
     store.dispatch(createTrackFailure());
 
     const actions = store.getActions();
-    const expectedPayload = { type: CREATE_TRACK_FAILURE};
+    const expectedPayload = { type: CREATE_TRACK_FAILURE };
     expect(actions).toEqual([expectedPayload]);
-  })
-})
-
-
-
-
+  });
+});

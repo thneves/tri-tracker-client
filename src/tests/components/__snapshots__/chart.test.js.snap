@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render the Chart component 1`] = `
+<canvas
+  data-testid="canvas"
+  height={150}
+  onClick={[Function]}
+  role="img"
+  width={300}
+/>
+`;
