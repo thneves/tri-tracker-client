@@ -1,6 +1,6 @@
 import { ALL_TRACKS_REQUEST, ALL_TRACKS_SUCCESS, ALL_TRACKS_FAILURE } from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   loading: false,
   tracks: {},
   error: '',

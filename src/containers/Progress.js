@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { fetchAllTracks } from '../redux/thunk/thunkGet';
-import dateFormat from '../helpers/dateChart';
+import dateFormatForChart from '../helpers/dateChart';
 import Chart from '../components/Chart';
 import Logout from './Logout';
 import Navbar from '../components/Navbar';
@@ -12,8 +12,13 @@ const Progress = () => {
   const dateArray = [];
   let onlyDates = [];
 
-  if (allTracks.length > 0) { allTracks.map(track => onlyDates.push(dateFormat(track.day))); }
-  if (allTracks.length > 0) { allTracks.map(track => dateArray.push([dateFormat(track.day), track.sport])); } // eslint-disable-line max-len
+  if (allTracks.length > 0) {
+    allTracks.map(track => onlyDates.push(dateFormatForChart(track.day)));
+  }
+
+  if (allTracks.length > 0) {
+    allTracks.map(track => dateArray.push([dateFormatForChart(track.day), track.sport]));
+  } // eslint-disable-line max-len
 
   onlyDates = onlyDates.filter((item, index) => onlyDates.indexOf(item) === index);
   const runningLabel = new Array(onlyDates.length).fill(0);
