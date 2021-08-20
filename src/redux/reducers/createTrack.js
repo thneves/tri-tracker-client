@@ -1,6 +1,6 @@
 import { CREATE_TRACK_REQUEST, CREATE_TRACK_SUCCESS, CREATE_TRACK_FAILURE } from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   loading: false,
   track: {},
   error: '',
