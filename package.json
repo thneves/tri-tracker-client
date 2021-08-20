@@ -10,7 +10,9 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "axios-mock-adapter": "^1.20.0",
     "chart.js": "^3.5.0",
+    "global-jsdom": "^8.1.0",
     "msw": "^0.34.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
@@ -65,5 +67,8 @@
     "stylelint-config-standard": "20.0.x",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "3.17.x"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
