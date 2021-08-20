@@ -1,4 +1,4 @@
-const dateFormat = day => {
+const dateFormatForChart = day => {
   const d = new Date(day);
 
   const year = d.getFullYear();
@@ -26,4 +26,4 @@ const dateFormat = day => {
   return formatted;
 };
 
-export default dateFormat;
+export default dateFormatForChart;

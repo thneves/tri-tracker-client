@@ -16,7 +16,7 @@ it('Should render the TrackCard component', () => {
         sport={track.sport}
         day={track.day}
         distance={track.distance}
-        moving_time={track.moving_time}
+        movingTime={track.moving_time}
       />,
     ).toJSON();
   expect(card).toMatchSnapshot();

@@ -33,7 +33,7 @@ exports[`Should render the TrackCard component 1`] = `
       Pace:
        
       <strong>
-        NaN
+        4:00
       </strong>
        
       <strong>
@@ -55,7 +55,7 @@ exports[`Should render the TrackCard component 1`] = `
       Time:
        
       <strong>
-        NaN:NaN:NaN
+        00:40:00
       </strong>
     </span>
   </div>
