@@ -36,7 +36,7 @@ const postLogin = async (email, password) => {
 };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
-  const response = await axios.post('http://localhost:3001/api/v1/tracks', {
+  const response = await axios.post('https://tri-tracker-api.herokuapp.com/api/v1/tracks', {
     track: {
       user_id: userId,
       sport,

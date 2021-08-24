@@ -45,7 +45,9 @@ const Dashboard = () => {
       sport: '',
       day: '',
       distance: 0,
-      moving_time: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
     });
   };
 
