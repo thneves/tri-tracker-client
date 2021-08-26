@@ -43,6 +43,9 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
       distance,
       moving_time: movingTime,
     },
+    headers: {
+      'Content-Type': 'application/json',
+    },
   }, { withCredentials: true });
 
   if (response.status === 200) {
