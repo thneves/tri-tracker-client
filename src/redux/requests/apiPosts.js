@@ -1,15 +1,14 @@
 import axios from 'axios';
 
 const postRegistration = async (username, email, password, passwordConfirmation) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/registrations', {
+  const response = await axios.post('http://localhost:3001/registrations', {
     user: {
       username,
       email,
       password,
       password_confirmation: passwordConfirmation,
     },
-  },
-  { withCredentials: true });
+  }, { withCredentials: true });
 
   if (response.status === 200) {
     const registeredUser = response.data.user;
@@ -20,7 +19,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
 };
 
 const postLogin = async (email, password) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/sessions', {
+  const response = await axios.post('http://localhost:3001/sessions', {
     user: {
       email,
       password,
@@ -36,7 +35,7 @@ const postLogin = async (email, password) => {
 };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/api/v1/tracks', {
+  const response = await axios.post('http://localhost:3001/api/v1/tracks', {
     track: {
       user_id: userId,
       sport,
@@ -44,8 +43,7 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
       distance,
       moving_time: movingTime,
     },
-  },
-  { withCredentials: true });
+  }, { withCredentials: true });
 
   if (response.status === 200) {
     const trackCreated = response.data.track;
