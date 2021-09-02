@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getTracks = async () => {
-  const response = await axios.get('https://tri-tracker-api.herokuapp.com/tracks', { withCredentials: true });
+  const response = await axios.get('https://tracker-server.herokuapp.com/tracks', { withCredentials: true });
 
   if (response.status === 200) {
     const requestedTracks = response.data.tracks;
@@ -12,7 +12,7 @@ const getTracks = async () => {
 };
 
 const getLoggedUser = async () => {
-  const response = await axios.get('https://tri-tracker-api.herokuapp.com/logged_in');
+  const response = await axios.get('https://tracker-server.herokuapp.com/logged_in');
 
   if (response.status === 200) {
     const requestedUser = response.data;
