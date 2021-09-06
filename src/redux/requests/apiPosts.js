@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const postRegistration = async (username, email, password, passwordConfirmation) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/registrations', {
+  const response = await axios.post('http://localhost:3001/registrations', {
     user: {
       username,
       email,
