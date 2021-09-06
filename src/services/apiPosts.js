@@ -19,7 +19,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
 };
 
 const postLogin = async (email, password) => {
-  const response = await axios.post('https://localhost:3001/sessions', {
+  const response = await axios.post('http://localhost:3001/sessions', {
     user: {
       email,
       password,

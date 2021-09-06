@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { fetchLogin } from '../redux/thunk/thunkPosts';
+import { postLogin } from '../services/apiPosts';
+import { loginRequest, loginFailure, loginSuccess } from '../redux/actions';
 import LoginImg from '../assets/images/login.png';
 import '../styles/containers/Login.scss';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [loginUser, setLoginUser] = useState({
     email: '',
     password: '',
   });
 
-  const history = useHistory();
+  const fetchLogin = (email, password) => {
+    dispatch(loginRequest());
+    const requestLogin = postLogin(email, password);
+    requestLogin.then(user => {
+      dispatch(loginSuccess(user[0], user[1]));
+      history.push('/dashboard');
+    })
+      .catch(error => {
+        dispatch(loginFailure(error.message));
+        window.alert(error.message);
+      });
+  };
 
   const handleSubmit = e => {
     fetchLogin(loginUser.email, loginUser.password);
-    history.push('/dashboard');
     e.preventDefault();
   };
 

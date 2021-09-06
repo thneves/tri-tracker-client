@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import store from '../redux/store';
-import { postRegistration } from '../redux/requests/apiPosts';
+import { postRegistration } from '../services/apiPosts';
 import { registerRequest, registerFailure, registerSuccess } from '../redux/actions/index';
 // import { fetchRegistration } from '../redux/thunk/thunkPosts';
 import '../styles/containers/Login.scss';
 
 const Register = () => {
-  const state = useSelector(state => state.register);
-  console.log(state);
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const [newUser, setNewUser] = useState({
     username: '',
     email: '',
@@ -22,14 +19,14 @@ const Register = () => {
   });
 
   const fetchRegistration = (username, email, password, passwordConfirmation) => {
-    store.dispatch(registerRequest());
+    dispatch(registerRequest());
     const requestRegister = postRegistration(username, email, password, passwordConfirmation);
     requestRegister.then(user => {
-      store.dispatch(registerSuccess(user));
+      dispatch(registerSuccess(user));
       history.push('/dashboard');
     })
       .catch(error => {
-        store.dispatch(registerFailure(error.message));
+        dispatch(registerFailure(error.message));
         window.alert(error.message);
       });
   };

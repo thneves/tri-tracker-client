@@ -1,5 +1,5 @@
 import store from '../store';
-import deleteSession from '../requests/apiDelete';
+import deleteSession from '../../services/apiDelete';
 import { logoutRequest, logoutSuccess, logoutFailure } from '../actions';
 
 const fetchLogout = () => {

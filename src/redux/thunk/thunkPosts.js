@@ -1,5 +1,5 @@
 import store from '../store';
-import { postLogin, postRegistration, postTrack } from '../requests/apiPosts';
+import { postLogin, postRegistration, postTrack } from '../../services/apiPosts';
 import {
   registerRequest, registerFailure, registerSuccess,
   loginRequest, loginFailure, loginSuccess,

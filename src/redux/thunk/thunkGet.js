@@ -1,5 +1,5 @@
 import store from '../store';
-import { getLoggedUser, getTracks } from '../requests/apiGet';
+import { getLoggedUser, getTracks } from '../../services/apiGet';
 import {
   allTracksRequest, allTracksSuccess, allTracksFailure,
   isLoggedRequest, isLoggedSuccess, isLoggedFailure,
