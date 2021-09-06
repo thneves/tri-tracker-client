@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,9 @@ import '../styles/containers/Dashboard.scss';
 import Loader from '../components/Loader';
 
 const Dashboard = () => {
-  const userId = useSelector(state => state.login.user);
+  const user = useSelector(state => state.login.user);
+  const isLogged = useSelector(state => state.login.valid);
+  const [notification, setNotification] = useState('');
   const [loading, setLoading] = useState(true);
   const [newTrack, setNewTrack] = useState({
     sport: '',
@@ -25,16 +28,21 @@ const Dashboard = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    setNotification('');
   }, []);
 
   if (loading) {
     return <Loader />;
   }
 
+  if (!isLogged) {
+    return <Redirect to="/" />;
+  }
+
   const handleSubmitTrack = e => {
     const movingTime = convertMin(newTrack.hours, newTrack.minutes, newTrack.seconds);
     fetchCreateTrack(
-      userId.id,
+      user.id,
       newTrack.sport,
       newTrack.day,
       newTrack.distance,
@@ -49,6 +57,7 @@ const Dashboard = () => {
       minutes: 0,
       seconds: 0,
     });
+    setNotification('Track successfully added!');
   };
 
   const handleChange = e => {
@@ -56,11 +65,12 @@ const Dashboard = () => {
       ...newTrack,
       [e.target.name]: e.target.value,
     });
+    setNotification('');
   };
 
   return (
     <>
-      <Logout text="Greetings!" />
+      <Logout text={`Greetings, ${user.username}!`} />
       <div className="dash-div">
         <h3 className="dash-head">Add your last training results</h3>
         <div className="form-div">
@@ -101,7 +111,7 @@ const Dashboard = () => {
             <button className="track-btn" type="submit">Add Training</button>
           </form>
         </div>
-
+        { notification === '' ? '' : <p className="message-success">{notification}</p>}
       </div>
       <Navbar />
     </>

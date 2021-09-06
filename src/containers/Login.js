@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { postLogin } from '../services/apiPosts';
+// import { postLogin } from '../services/apiPosts';
 import { loginRequest, loginFailure, loginSuccess } from '../redux/actions';
 import LoginImg from '../assets/images/login.png';
 import '../styles/containers/Login.scss';
@@ -11,26 +12,47 @@ import '../styles/containers/Login.scss';
 const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [notification, setNotification] = useState('');
   const [loginUser, setLoginUser] = useState({
     email: '',
     password: '',
   });
 
-  const fetchLogin = (email, password) => {
-    dispatch(loginRequest());
-    const requestLogin = postLogin(email, password);
-    requestLogin.then(user => {
-      dispatch(loginSuccess(user[0], user[1]));
+  // const fetchLogin = (email, password) => {
+  //   dispatch(loginRequest());
+  //   const requestLogin = postLogin(email, password);
+  //   requestLogin.then(data => {
+  //     if (data.status === 'created') {
+  //       dispatch(loginSuccess(data[0], data[1]));
+  //       history.push('/dashboard');
+  //     }
+  //   })
+  //     .catch(error => {
+  //       dispatch(loginFailure(error.message));
+  //       window.alert(error.message);
+  //     });
+  // };
+
+  const postLogin = async (email, password) => {
+    const response = await axios.post('http://localhost:3001/sessions', {
+      user: {
+        email,
+        password,
+      },
+    }, { withCredentials: true });
+
+    if (response.data.status === 'created') {
+      dispatch(loginSuccess(response.data.user, response.data.logged_in));
       history.push('/dashboard');
-    })
-      .catch(error => {
-        dispatch(loginFailure(error.message));
-        window.alert(error.message);
-      });
+    } else {
+      dispatch(loginFailure(response.data.message));
+      setNotification(response.data.message);
+    }
   };
 
   const handleSubmit = e => {
-    fetchLogin(loginUser.email, loginUser.password);
+    dispatch(loginRequest());
+    postLogin(loginUser.email, loginUser.password);
     e.preventDefault();
   };
 
@@ -42,9 +64,14 @@ const Login = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    setNotification('');
+  }, []);
+
   return (
     <>
       <Link to="/" className="back-icon"><FontAwesomeIcon icon={faArrowCircleLeft}>Back</FontAwesomeIcon></Link>
+      { notification === '' ? '' : <p className="message-error">{notification}</p>}
       <div className="login-div">
         <div className="login-triangle" />
         <h2 className="login-header">Log In</h2>
