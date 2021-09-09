@@ -11,7 +11,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const registeredUser = response.data.user;
+    const registeredUser = [response.data.user, response.data.logged_in];
     return registeredUser;
   }
 

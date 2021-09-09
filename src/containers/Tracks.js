@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { fetchAllTracks } from '../redux/thunk/thunkGet';
+import fetchAllTracks from '../redux/thunk/thunkGet';
 import Navbar from '../components/Navbar';
 import Logout from './Logout';
 import TrackCard from '../components/TrackCard';
@@ -10,6 +10,7 @@ import '../styles/containers/Tracks.scss';
 const Tracks = () => {
   const allTracks = useSelector(state => state.allTracks.tracks);
   const isLogged = useSelector(state => state.login.valid);
+  const logRegister = useSelector(state => state.register.valid);
   let printTracks;
 
   if (allTracks.length > 0) {
@@ -24,7 +25,7 @@ const Tracks = () => {
     ));
   }
 
-  if (!isLogged) {
+  if (!isLogged && !logRegister) {
     return <Redirect to="/" />;
   }
 

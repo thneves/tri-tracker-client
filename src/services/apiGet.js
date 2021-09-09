@@ -11,15 +11,4 @@ const getTracks = async () => {
   throw Error(response.status);
 };
 
-const getLoggedUser = async () => {
-  const response = await axios.get('http://localhost:3001/logged_in');
-
-  if (response.status === 200) {
-    const requestedUser = response.data;
-    return requestedUser;
-  }
-
-  throw Error(response.status);
-};
-
-export { getTracks, getLoggedUser };
+export default getTracks;

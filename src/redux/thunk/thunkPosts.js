@@ -1,33 +1,9 @@
 import store from '../store';
-import { postLogin, postRegistration, postTrack } from '../../services/apiPosts';
+import { postTrack } from '../../services/apiPosts';
 import {
-  registerRequest, registerFailure, registerSuccess,
-  loginRequest, loginFailure, loginSuccess,
   createTrackRequest, createTrackSuccess, createTrackFailure,
 }
   from '../actions';
-
-const fetchRegistration = (username, email, password, passwordConfirmation) => {
-  store.dispatch(registerRequest());
-  const requestRegister = postRegistration(username, email, password, passwordConfirmation);
-  requestRegister.then(user => {
-    store.dispatch(registerSuccess(user));
-  })
-    .catch(error => {
-      store.dispatch(registerFailure(error.message));
-    });
-};
-
-const fetchLogin = (email, password) => {
-  store.dispatch(loginRequest());
-  const requestLogin = postLogin(email, password);
-  requestLogin.then(user => {
-    store.dispatch(loginSuccess(user[0], user[1]));
-  })
-    .catch(error => {
-      store.dispatch(loginFailure(error.message));
-    });
-};
 
 const fetchCreateTrack = (userId, sport, day, distance, movingTime) => {
   store.dispatch(createTrackRequest());
@@ -40,4 +16,4 @@ const fetchCreateTrack = (userId, sport, day, distance, movingTime) => {
     });
 };
 
-export { fetchRegistration, fetchLogin, fetchCreateTrack };
+export default fetchCreateTrack;

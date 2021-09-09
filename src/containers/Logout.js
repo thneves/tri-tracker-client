@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import deleteSession from '../services/apiDelete';
-import { logoutRequest, logoutSuccess, logoutFailure } from '../redux/actions';
+import {
+  logoutRequest, logoutSuccess, logoutFailure, loginReset, registerReset,
+} from '../redux/actions';
 import '../styles/containers/Logout.scss';
 
 const Logout = ({ text }) => {
@@ -16,6 +18,8 @@ const Logout = ({ text }) => {
     const requestLogout = deleteSession();
     requestLogout.then(logged_out => {
       dispatch(logoutSuccess(logged_out));
+      dispatch(loginReset());
+      dispatch(registerReset());
       history.push('/');
     })
       .catch(error => {

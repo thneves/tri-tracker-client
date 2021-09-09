@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
-import { fetchCreateTrack } from '../redux/thunk/thunkPosts';
+import fetchCreateTrack from '../redux/thunk/thunkPosts';
 import { convertMin } from '../helpers/convertSec';
 import Logout from './Logout';
 import Navbar from '../components/Navbar';
@@ -12,7 +12,10 @@ import Loader from '../components/Loader';
 
 const Dashboard = () => {
   const user = useSelector(state => state.login.user);
+  const userReg = useSelector(state => state.register.user);
   const isLogged = useSelector(state => state.login.valid);
+  const logRegister = useSelector(state => state.register.valid);
+
   const [notification, setNotification] = useState('');
   const [loading, setLoading] = useState(true);
   const [newTrack, setNewTrack] = useState({
@@ -35,7 +38,7 @@ const Dashboard = () => {
     return <Loader />;
   }
 
-  if (!isLogged) {
+  if (!isLogged && !logRegister) {
     return <Redirect to="/" />;
   }
 
@@ -70,7 +73,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Logout text={`Greetings, ${user.username}!`} />
+      <Logout text={`Greetings, ${user.username || userReg.username}!`} />
       <div className="dash-div">
         <h3 className="dash-head">Add your last training results</h3>
         <div className="form-div">
@@ -96,16 +99,16 @@ const Dashboard = () => {
               </label>
               <label className="label-distance" htmlFor="distance">
                 Distance
-                <input type="number" min={-1} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
+                <input type="number" min={0} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
                 km
               </label>
               <label className="label-time" htmlFor="moving_time">
                 HH:
-                <input type="number" min={-1} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
+                <input type="number" min={0} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
                 MM:
-                <input type="number" min={-1} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
+                <input type="number" min={0} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
                 SS:
-                <input type="number" min={-1} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
+                <input type="number" min={0} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
               </label>
             </div>
             <button className="track-btn" type="submit">Add Training</button>

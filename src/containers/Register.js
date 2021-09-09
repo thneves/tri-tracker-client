@@ -23,7 +23,7 @@ const Register = () => {
     dispatch(registerRequest());
     const requestRegister = postRegistration(username, email, password, passwordConfirmation);
     requestRegister.then(user => {
-      dispatch(registerSuccess(user));
+      dispatch(registerSuccess(user[0], user[1]));
       history.push('/dashboard');
     })
       .catch(error => {
