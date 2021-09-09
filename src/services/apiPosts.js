@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const postRegistration = async (username, email, password, passwordConfirmation) => {
-  const response = await axios.post('http://localhost:3001/registrations', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/registrations', {
     user: {
       username,
       email,
@@ -19,7 +19,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
 };
 
 const postLogin = async (email, password) => {
-  const response = await axios.post('http://localhost:3001/sessions', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/sessions', {
     user: {
       email,
       password,
@@ -37,7 +37,7 @@ const postLogin = async (email, password) => {
 };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
-  const response = await axios.post('http://localhost:3001/tracks', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/tracks', {
     track: {
       user_id: userId,
       sport,
