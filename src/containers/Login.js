@@ -31,28 +31,9 @@ const Login = () => {
       });
   };
 
-  // const postLogin = async (email, password) => {
-  //   const response = await axios.post('https://tri-tracker.herokuapp.com/sessions', {
-  //     user: {
-  //       email,
-  //       password,
-  //     },
-  //   }, { withCredentials: true });
-
-  //   if (response.data.status === 'created') {
-  //     dispatch(loginSuccess(response.data.user, response.data.logged_in));
-  //     history.push('/dashboard');
-  //   } else {
-  //     dispatch(loginFailure(response.data.message));
-  //     setNotification(response.data.message);
-  //   }
-  // };
-
   const handleSubmit = e => {
     dispatch(loginRequest());
-    console.log('here');
     fetchLogin(loginUser.email, loginUser.password);
-    console.log('after');
     e.preventDefault();
   };
 
