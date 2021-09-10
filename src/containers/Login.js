@@ -37,7 +37,9 @@ const Login = () => {
 
   const handleSubmit = e => {
     dispatch(loginRequest());
+    console.log('here');
     postLogin(loginUser.email, loginUser.password);
+    console.log('after');
     e.preventDefault();
   };
 

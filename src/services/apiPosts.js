@@ -18,23 +18,23 @@ const postRegistration = async (username, email, password, passwordConfirmation)
   throw Error(response.status);
 };
 
-const postLogin = async (email, password) => {
-  const response = await axios.post('https://tracker-server.herokuapp.com/sessions', {
-    user: {
-      email,
-      password,
-    },
-  }, { withCredentials: true });
+// const postLogin = async (email, password) => {
+//   const response = await axios.post('https://tracker-server.herokuapp.com/sessions', {
+//     user: {
+//       email,
+//       password,
+//     },
+//   }, { withCredentials: true });
 
-  if (response.status === 200) {
-    if (response.data.logged_in) {
-      const loggedUser = [response.data.user, response.data.logged_in];
-      return loggedUser;
-    }
-  }
+//   if (response.status === 200) {
+//     if (response.data.logged_in) {
+//       const loggedUser = [response.data.user, response.data.logged_in];
+//       return loggedUser;
+//     }
+//   }
 
-  return response.data.status;
-};
+//   return response.data.status;
+// };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
   const response = await axios.post('https://tracker-server.herokuapp.com/tracks', {
@@ -58,4 +58,4 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
   throw Error(response.status);
 };
 
-export { postRegistration, postLogin, postTrack };
+export { postRegistration, postTrack };
