@@ -8,7 +8,7 @@
 <p align="center">
   <strong>Web App created by Thales Neves</strong>
   <br>
-  Project created using <a href="https://reactjs.org">React</a> & <a href="http://redux.js.org">Redux</a>
+  Project created using <a href="https://reactjs.org">React</a> & <a href="http://redux.js.org">Redux</a> and <a href="https://github.com/thneves/triathlon-tracker">Rails API</a>
 </p>
 
 <p align="center">
@@ -34,7 +34,6 @@
 - [🖥️ Setup](#🖥️-setup)
   - [Requirements](#requirements)
   - [Installation](#installation)
-  - [API KEYS](#api-keys-and-env-variables)
   - [Run The Project](#run-the-project)
   - [Tests](#testing-code)
 - [👤 Author](#👤-author)
@@ -61,6 +60,8 @@
 [Axios](https://axios-http)
 
 [Jest](https://jestjs.io/)
+
+[Ruby on Rails API](https://github.com/thneves/triathlon-tracker)
 
 <br>
 
