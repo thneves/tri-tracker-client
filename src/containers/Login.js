@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-// import { postLogin } from '../services/apiPosts';
+import { postLogin } from '../services/apiPosts';
 import { loginRequest, loginFailure, loginSuccess } from '../redux/actions';
 import LoginImg from '../assets/images/login.png';
 import '../styles/containers/Login.scss';
@@ -18,27 +18,40 @@ const Login = () => {
     password: '',
   });
 
-  const postLogin = async (email, password) => {
-    const response = await axios.post('https://tri-tracker.herokuapp.com/sessions', {
-      user: {
-        email,
-        password,
-      },
-    }, { withCredentials: true });
-
-    if (response.data.status === 'created') {
-      dispatch(loginSuccess(response.data.user, response.data.logged_in));
+  const fetchLogin = (email, password) => {
+    dispatch(loginRequest());
+    const requestedLogin = postLogin(email, password);
+    requestedLogin.then(user => {
+      dispatch(loginSuccess(user[0], user[1]));
       history.push('/dashboard');
-    } else {
-      dispatch(loginFailure(response.data.message));
-      setNotification(response.data.message);
-    }
+    })
+      .catch(error => {
+        dispatch(loginFailure(error.message));
+        setNotification('Invalid credentials, try again!');
+      });
   };
+
+  // const postLogin = async (email, password) => {
+  //   const response = await axios.post('https://tri-tracker.herokuapp.com/sessions', {
+  //     user: {
+  //       email,
+  //       password,
+  //     },
+  //   }, { withCredentials: true });
+
+  //   if (response.data.status === 'created') {
+  //     dispatch(loginSuccess(response.data.user, response.data.logged_in));
+  //     history.push('/dashboard');
+  //   } else {
+  //     dispatch(loginFailure(response.data.message));
+  //     setNotification(response.data.message);
+  //   }
+  // };
 
   const handleSubmit = e => {
     dispatch(loginRequest());
     console.log('here');
-    postLogin(loginUser.email, loginUser.password);
+    fetchLogin(loginUser.email, loginUser.password);
     console.log('after');
     e.preventDefault();
   };
