@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { fetchAllTracks } from '../redux/thunk/thunkGet';
+import { Redirect } from 'react-router-dom';
+import fetchAllTracks from '../redux/thunk/thunkGet';
 import dateFormatForChart from '../helpers/dateChart';
 import Chart from '../components/Chart';
 import Logout from './Logout';
@@ -9,8 +10,14 @@ import '../styles/components/Progress.scss';
 
 const Progress = () => {
   const allTracks = useSelector(state => state.allTracks.tracks);
+  const isLogged = useSelector(state => state.login.valid);
+  const logRegister = useSelector(state => state.register.valid);
   const dateArray = [];
   let onlyDates = [];
+
+  if (!isLogged && !logRegister) {
+    return <Redirect to="/" />;
+  }
 
   if (allTracks.length > 0) {
     allTracks.map(track => onlyDates.push(dateFormatForChart(track.day)));

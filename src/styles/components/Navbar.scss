@@ -22,9 +22,9 @@
       width: 46px;
       height: 46px;
     }
-  }
-}
 
-.bg-blue {
-  background-color: var(--primary-color);
+    &:hover {
+      background-color: var(--primary-color);
+    }
+  }
 }

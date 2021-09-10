@@ -11,7 +11,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const registeredUser = response.data.user;
+    const registeredUser = [response.data.user, response.data.logged_in];
     return registeredUser;
   }
 
@@ -27,11 +27,13 @@ const postLogin = async (email, password) => {
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const loggedUser = [response.data.user, response.data.logged_in];
-    return loggedUser;
+    if (response.data.logged_in) {
+      const loggedUser = [response.data.user, response.data.logged_in];
+      return loggedUser;
+    }
   }
 
-  throw Error(response.status);
+  return response.data.status;
 };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
@@ -56,4 +58,4 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
   throw Error(response.status);
 };
 
-export { postRegistration, postLogin, postTrack };
+export { postRegistration, postTrack, postLogin };
