@@ -1,70 +1,168 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">
 
-## Available Scripts
+  **TRI TRACKER**
 
-In the project directory, you can run:
+</h3>
 
-### `yarn start`
+<p align="center">
+  <strong>Web App created by Thales Neves</strong>
+  <br>
+  Project created using <a href="https://reactjs.org">React</a> & <a href="http://redux.js.org">Redux</a>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <a href="https://tri-tracker.herokuapp.com/">
+    <img src="https://img.shields.io/badge/OPEN%20app%20-darkred?style=for-the-badge">
+  </a>
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center">
+  <a href="https://github.com/thneves/tri-tracker-client/issues">
+    <img src="https://img.shields.io/badge/REPORT%20A%20BUG-royalblue?style=for-the-badge">
+  </a>
+   ‎ ‎ ‎ ‎
+  <a href="https://github.com/thneves/tri-tracker-client/issues">
+    <img src="https://img.shields.io/badge/Request%20a%20feature-royalblue?style=for-the-badge">
+  </a>
+</p>
 
-### `yarn test`
+## Table of Contents
+- [🚀 About Tri Tracker](#🚀-about-tri-tracker)
+- [⚒️ Built With React & Redux](#⚒️-built-with-react-&-redux)
+- [🟢 Live Demo](#🟢-live-demo)
+- [🖥️ Setup](#🖥️-setup)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [API KEYS](#api-keys-and-env-variables)
+  - [Run The Project](#run-the-project)
+  - [Tests](#testing-code)
+- [👤 Author](#👤-author)
+- [🤝 Contributing](#🤝-contributing)
+- [⭐ Show your support](#⭐-show-your-support)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## 🚀 About Tri Tracker
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[**Tri Tracker**](https://tri-tracker.herokuapp.com/) is a web app where you can track your triathlon activities, you can record running, cyclings or swimmings. All your activities will be recorded and you can check the distance, moving time and average pace at any time. You can also check your stats and verify which activities you are doing most on each month through a graphic chart. It was build with React & Redux and [Rails API](https://github.com/thneves/triathlon-tracker).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧪 Built With
 
-### `yarn eject`
+[React](https://reactjs.org)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Redux](http://redux.js.org)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Chart Js](https://github.com/reactchartjs/react-chartjs-2)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[Heroku](https://netlify.com)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[Axios](https://axios-http)
 
-## Learn More
+[Jest](https://jestjs.io/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🟢 Live
 
-### Code Splitting
+<h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  [Tri Tracker](https://tri-tracker.herokuapp.com/)
 
-### Analyzing the Bundle Size
+</h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<a href="https://tri-tracker.herokuapp.com/">
+  <img src="./screenshot.png">
+</a>
 
-### Making a Progressive Web App
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<a href="https://tri-tracker.herokuapp.com/">
+  <img src="./screenshot2.png">
+</a>
 
-### Advanced Configuration
+<br>
+<br>
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🖥️ Setup
 
-### Deployment
+### Requirements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Internet Browser
 
-### `yarn build` fails to minify
+[Git](https://git-scm.com/downloads) for version control.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Node.js](https://nodejs.org) to install dependencies
+
+[Yarn](https://yarnpkg.com) to run scripts and install packages.
+
+### Installation
+
+Open the terminal inside a folder of your choice and clone this repository using the following [Git](https://git-scm.com/downloads) commands in the terminal:
+
+```
+    git clone https://github.com/thneves/tri-tracker-client.git
+```
+
+Then, enter the project folder using:
+
+```
+    cd tri-tracker-client
+```
+
+To be able to run the web app you need to install Node dependencies by typing the following command on your terminal:
+
+```
+    yarn install
+```
+
+Done!
+
+### Run The Project
+
+Before running this project you must start the backend server, follow the instructions [HERE](https://github.com/thneves/triathlon-tracker)!
+Make sure that your server is runnig on `localhost:3001` and the go on.
+
+Now that you've installed the repository and have the backend server running. Type the following to start the project:
+
+```
+    yarn start
+```
+
+This command will open a `localhost:3000` server where it will be running the web app, you can close the server using CTRL + C.
+
+
+### Testing Code
+
+To check all the test coverage made in the project application run the following command:
+
+```
+    yarn test
+```
+
+
+**Enjoy!**
+
+## 👤 Author
+
+ **Thales Neves**
+
+- Github: [thneves](https://github.com/thneves)
+- Twitter: [@tsneves11](https://twitter.com/tsneves11)
+- LinkedIn: [Thales Neves]([(https://www.linkedin.com/in/thales-neves10/))
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/thneves/tri-tracker-client).
+
+## ⭐ Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+The design idea of this project was made by [Gregoire Vella](https://www.behance.net/gregoirevella).
