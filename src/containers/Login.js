@@ -18,23 +18,8 @@ const Login = () => {
     password: '',
   });
 
-  // const fetchLogin = (email, password) => {
-  //   dispatch(loginRequest());
-  //   const requestLogin = postLogin(email, password);
-  //   requestLogin.then(data => {
-  //     if (data.status === 'created') {
-  //       dispatch(loginSuccess(data[0], data[1]));
-  //       history.push('/dashboard');
-  //     }
-  //   })
-  //     .catch(error => {
-  //       dispatch(loginFailure(error.message));
-  //       window.alert(error.message);
-  //     });
-  // };
-
   const postLogin = async (email, password) => {
-    const response = await axios.post('http://localhost:3001/sessions', {
+    const response = await axios.post('https://tri-tracker.herokuapp.com/sessions', {
       user: {
         email,
         password,

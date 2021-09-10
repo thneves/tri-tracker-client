@@ -24,7 +24,6 @@ const Logout = ({ text }) => {
     })
       .catch(error => {
         dispatch(logoutFailure(error.message));
-        window.alert(error.message);
       });
   };
 
