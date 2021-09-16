@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const deleteSession = async () => {
-  const response = await axios.delete('https://tracker-server.herokuapp.com/logout', { withCredentials: true });
+  const response = await axios.delete('https://tracker-server.herokuapp.com/api/v1/logout', { withCredentials: true });
 
   if (response.status === 200) {
     const logoutUser = response.data.logged_out;

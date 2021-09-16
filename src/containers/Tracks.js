@@ -13,6 +13,10 @@ const Tracks = () => {
   const logRegister = useSelector(state => state.register.valid);
   let printTracks;
 
+  useEffect(() => {
+    fetchAllTracks();
+  }, [fetchAllTracks]);
+
   if (allTracks.length > 0) {
     printTracks = allTracks.map(track => (
       <TrackCard
@@ -28,10 +32,6 @@ const Tracks = () => {
   if (!isLogged && !logRegister) {
     return <Redirect to="/" />;
   }
-
-  useEffect(() => {
-    fetchAllTracks();
-  }, [fetchAllTracks]);
 
   return (
     <div className="container">

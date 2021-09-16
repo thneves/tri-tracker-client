@@ -15,6 +15,10 @@ const Progress = () => {
   const dateArray = [];
   let onlyDates = [];
 
+  useEffect(() => {
+    fetchAllTracks();
+  }, [fetchAllTracks]);
+
   if (!isLogged && !logRegister) {
     return <Redirect to="/" />;
   }
@@ -46,10 +50,6 @@ const Progress = () => {
       }
     });
   });
-
-  useEffect(() => {
-    fetchAllTracks();
-  }, [fetchAllTracks]);
 
   return (
     <div className="container">
