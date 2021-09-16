@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { fetchRegistration } from '../redux/thunk/thunkPosts';
+import { postRegistration } from '../services/apiPosts';
+import { registerRequest, registerFailure, registerSuccess } from '../redux/actions/index';
+// import { fetchRegistration } from '../redux/thunk/thunkPosts';
 import '../styles/containers/Login.scss';
 
 const Register = () => {
   const history = useHistory();
+  const [notification, setNotification] = useState('');
+  const dispatch = useDispatch();
   const [newUser, setNewUser] = useState({
     username: '',
     email: '',
     password: '',
     password_confirmation: '',
   });
+
+  const fetchRegistration = (username, email, password, passwordConfirmation) => {
+    dispatch(registerRequest());
+    const requestRegister = postRegistration(username, email, password, passwordConfirmation);
+    requestRegister.then(user => {
+      dispatch(registerSuccess(user[0], user[1]));
+      history.push('/dashboard');
+    })
+      .catch(error => {
+        dispatch(registerFailure(error.message));
+        setNotification("username or email already taken, or password doesn't match");
+      });
+  };
 
   const handleSubmit = e => {
     fetchRegistration(
@@ -21,7 +39,6 @@ const Register = () => {
       newUser.password,
       newUser.password_confirmation,
     );
-    history.push('/dashboard');
     e.preventDefault();
   };
 
@@ -33,9 +50,14 @@ const Register = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    setNotification('');
+  }, []);
+
   return (
     <>
       <Link to="/" className="back-icon"><FontAwesomeIcon icon={faArrowCircleLeft}>Back</FontAwesomeIcon></Link>
+      { notification === '' ? '' : <p>{notification}</p>}
       <div className="login-div">
         <div className="login-triangle" />
         <h2 className="login-header">Register</h2>

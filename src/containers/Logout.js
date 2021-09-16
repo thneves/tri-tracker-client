@@ -1,15 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import fetchLogout from '../redux/thunk/thunkDelete';
+import deleteSession from '../services/apiDelete';
+import {
+  logoutRequest, logoutSuccess, logoutFailure, loginReset, registerReset,
+} from '../redux/actions';
 import '../styles/containers/Logout.scss';
 
 const Logout = ({ text }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const fetchLogout = () => {
+    dispatch(logoutRequest());
+    /* eslint-disable camelcase */
+    const requestLogout = deleteSession();
+    requestLogout.then(logged_out => {
+      dispatch(logoutSuccess(logged_out));
+      dispatch(loginReset());
+      dispatch(registerReset());
+      history.push('/');
+    })
+      .catch(error => {
+        dispatch(logoutFailure(error.message));
+      });
+  };
 
   const handleLogout = () => {
     fetchLogout();
-    history.push('/');
   };
 
   return (

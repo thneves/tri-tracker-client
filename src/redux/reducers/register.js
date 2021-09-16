@@ -1,8 +1,11 @@
-import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE } from '../actions/actionTypes';
+import {
+  REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, REGISTER_RESET,
+} from '../actions/actionTypes';
 
 const initialState = {
   loading: false,
   user: {},
+  valid: false,
   error: '',
 };
 
@@ -15,6 +18,7 @@ const register = (state = initialState, action) => {
         ...state,
         loading: false,
         user: action.payload,
+        valid: action.valid,
         error: '',
       };
     case REGISTER_FAILURE:
@@ -22,7 +26,16 @@ const register = (state = initialState, action) => {
         ...state,
         loading: false,
         user: {},
+        valid: false,
         error: action.payload,
+      };
+    case REGISTER_RESET:
+      return {
+        ...state,
+        loading: false,
+        user: {},
+        valid: false,
+        error: '',
       };
     default:
       return state;

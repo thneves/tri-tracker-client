@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBiking, faSwimmer, faRunning } from '@fortawesome/free-solid-svg-icons';
-import { fetchCreateTrack } from '../redux/thunk/thunkPosts';
+import fetchCreateTrack from '../redux/thunk/thunkPosts';
 import { convertMin } from '../helpers/convertSec';
 import Logout from './Logout';
 import Navbar from '../components/Navbar';
@@ -10,7 +11,12 @@ import '../styles/containers/Dashboard.scss';
 import Loader from '../components/Loader';
 
 const Dashboard = () => {
-  const userId = useSelector(state => state.login.user);
+  const user = useSelector(state => state.login.user);
+  const userReg = useSelector(state => state.register.user);
+  const isLogged = useSelector(state => state.login.valid);
+  const logRegister = useSelector(state => state.register.valid);
+
+  const [notification, setNotification] = useState('');
   const [loading, setLoading] = useState(true);
   const [newTrack, setNewTrack] = useState({
     sport: '',
@@ -25,16 +31,21 @@ const Dashboard = () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    setNotification('');
   }, []);
 
   if (loading) {
     return <Loader />;
   }
 
+  if (!isLogged && !logRegister) {
+    return <Redirect to="/" />;
+  }
+
   const handleSubmitTrack = e => {
     const movingTime = convertMin(newTrack.hours, newTrack.minutes, newTrack.seconds);
     fetchCreateTrack(
-      userId.id,
+      user.id,
       newTrack.sport,
       newTrack.day,
       newTrack.distance,
@@ -49,6 +60,7 @@ const Dashboard = () => {
       minutes: 0,
       seconds: 0,
     });
+    setNotification('Track successfully added!');
   };
 
   const handleChange = e => {
@@ -56,11 +68,12 @@ const Dashboard = () => {
       ...newTrack,
       [e.target.name]: e.target.value,
     });
+    setNotification('');
   };
 
   return (
     <>
-      <Logout text="Greetings!" />
+      <Logout text={`Greetings, ${user.username || userReg.username}!`} />
       <div className="dash-div">
         <h3 className="dash-head">Add your last training results</h3>
         <div className="form-div">
@@ -86,22 +99,22 @@ const Dashboard = () => {
               </label>
               <label className="label-distance" htmlFor="distance">
                 Distance
-                <input type="number" min={-1} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
+                <input type="number" min={0} name="distance" placeholder="km" value={newTrack.distance} onChange={handleChange} required />
                 km
               </label>
               <label className="label-time" htmlFor="moving_time">
                 HH:
-                <input type="number" min={-1} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
+                <input type="number" min={0} name="hours" placeholder="h" value={newTrack.hours} onChange={handleChange} required />
                 MM:
-                <input type="number" min={-1} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
+                <input type="number" min={0} max={59} name="minutes" placeholder="m" value={newTrack.minutes} onChange={handleChange} required />
                 SS:
-                <input type="number" min={-1} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
+                <input type="number" min={0} max={59} name="seconds" placeholder="s" value={newTrack.seconds} onChange={handleChange} required />
               </label>
             </div>
             <button className="track-btn" type="submit">Add Training</button>
           </form>
         </div>
-
+        { notification === '' ? '' : <p className="message-success">{notification}</p>}
       </div>
       <Navbar />
     </>

@@ -1,4 +1,6 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
+import {
+  LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGIN_RESET,
+} from '../actions/actionTypes';
 
 const initialState = {
   loading: false,
@@ -26,6 +28,14 @@ const login = (state = initialState, action) => {
         user: {},
         valid: false,
         error: action.payload,
+      };
+    case LOGIN_RESET:
+      return {
+        ...state,
+        loading: false,
+        user: {},
+        valid: false,
+        error: '',
       };
     default:
       return state;

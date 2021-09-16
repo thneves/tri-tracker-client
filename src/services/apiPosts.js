@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const postRegistration = async (username, email, password, passwordConfirmation) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/registrations', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/api/v1/registrations', {
     user: {
       username,
       email,
@@ -11,7 +11,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const registeredUser = response.data.user;
+    const registeredUser = [response.data.user, response.data.logged_in];
     return registeredUser;
   }
 
@@ -19,7 +19,7 @@ const postRegistration = async (username, email, password, passwordConfirmation)
 };
 
 const postLogin = async (email, password) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/sessions', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/api/v1/sessions', {
     user: {
       email,
       password,
@@ -27,15 +27,17 @@ const postLogin = async (email, password) => {
   }, { withCredentials: true });
 
   if (response.status === 200) {
-    const loggedUser = [response.data.user, response.data.logged_in];
-    return loggedUser;
+    if (response.data.logged_in) {
+      const loggedUser = [response.data.user, response.data.logged_in];
+      return loggedUser;
+    }
   }
 
-  throw Error(response.status);
+  return response.data.status;
 };
 
 const postTrack = async (userId, sport, day, distance, movingTime) => {
-  const response = await axios.post('https://tri-tracker-api.herokuapp.com/tracks', {
+  const response = await axios.post('https://tracker-server.herokuapp.com/api/v1/tracks', {
     track: {
       user_id: userId,
       sport,
@@ -56,4 +58,4 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
   throw Error(response.status);
 };
 
-export { postRegistration, postLogin, postTrack };
+export { postRegistration, postTrack, postLogin };
