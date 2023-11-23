@@ -13,7 +13,7 @@ const Register = () => {
   const [notification, setNotification] = useState('');
   const dispatch = useDispatch();
   const [newUser, setNewUser] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -34,7 +34,7 @@ const Register = () => {
 
   const handleSubmit = e => {
     fetchRegistration(
-      newUser.username,
+      newUser.name,
       newUser.email,
       newUser.password,
       newUser.password_confirmation,

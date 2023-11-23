@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-const postRegistration = async (username, email, password, passwordConfirmation) => {
-  const response = await axios.post('http://localhost:3001/registrations', {
+const postRegistration = async (name, email, password, passwordConfirmation) => {
+  const response = await axios.post('http://localhost:3001/signup', {
     user: {
-      username,
+      name,
       email,
       password,
       password_confirmation: passwordConfirmation,
     },
-  }, { withCredentials: true });
+  }, { withCredentials: false });
 
   if (response.status === 200) {
     const registeredUser = [response.data.user, response.data.logged_in];
@@ -19,12 +19,12 @@ const postRegistration = async (username, email, password, passwordConfirmation)
 };
 
 const postLogin = async (email, password) => {
-  const response = await axios.post('http://localhost:3001/sessions', {
+  const response = await axios.post('http://localhost:3001/login', {
     user: {
       email,
       password,
     },
-  }, { withCredentials: true });
+  }, { withCredentials: false });
 
   if (response.status === 200) {
     if (response.data.logged_in) {
@@ -48,7 +48,7 @@ const postTrack = async (userId, sport, day, distance, movingTime) => {
     headers: {
       'Content-Type': 'application/json',
     },
-  }, { withCredentials: true });
+  }, { withCredentials: false });
 
   if (response.status === 200) {
     const trackCreated = response.data.track;

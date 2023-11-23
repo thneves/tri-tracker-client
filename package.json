@@ -56,14 +56,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "babel-eslint": "10.1.x",
     "babel-jest": "^27.0.6",
-    "eslint": "^8.0.0",
-    "eslint-config-airbnb": "18.1.x",
-    "eslint-plugin-import": "2.22.x",
-    "eslint-plugin-jsx-a11y": "6.2.x",
-    "eslint-plugin-react": "7.20.x",
-    "eslint-plugin-react-hooks": "2.5.x",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
     "jest-css-modules-transform": "^4.3.0",
