@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import fetchAllTracks from '../redux/thunk/thunkGet';
 import Navbar from '../components/Navbar';
 import Logout from './Logout';
 import TrackCard from '../components/TrackCard';
@@ -29,9 +28,6 @@ const Tracks = () => {
     return <Redirect to="/" />;
   }
 
-  useEffect(() => {
-    fetchAllTracks();
-  }, [fetchAllTracks]);
 
   return (
     <div className="container">

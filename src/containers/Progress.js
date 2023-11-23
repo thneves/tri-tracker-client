@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import fetchAllTracks from '../redux/thunk/thunkGet';
 import dateFormatForChart from '../helpers/dateChart';
 import Chart from '../components/Chart';
 import Logout from './Logout';
@@ -46,10 +44,6 @@ const Progress = () => {
       }
     });
   });
-
-  useEffect(() => {
-    fetchAllTracks();
-  }, [fetchAllTracks]);
 
   return (
     <div className="container">
