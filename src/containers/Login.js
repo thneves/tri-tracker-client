@@ -22,7 +22,9 @@ const Login = () => {
     dispatch(loginRequest());
     const requestedLogin = postLogin(email, password);
     requestedLogin.then(user => {
-      dispatch(loginSuccess(user[0], user[1]));
+      let isValid = user.code == 200
+      let userData = user.data
+      dispatch(loginSuccess(userData, isValid));
       history.push('/dashboard');
     })
       .catch(error => {

@@ -19,16 +19,18 @@ const Register = () => {
     password_confirmation: '',
   });
 
-  const fetchRegistration = (username, email, password, passwordConfirmation) => {
+  console.log(newUser)
+
+  const fetchRegistration = (name, email, password, passwordConfirmation) => {
     dispatch(registerRequest());
-    const requestRegister = postRegistration(username, email, password, passwordConfirmation);
+    const requestRegister = postRegistration(name, email, password, passwordConfirmation);
     requestRegister.then(user => {
       dispatch(registerSuccess(user[0], user[1]));
       history.push('/dashboard');
     })
       .catch(error => {
         dispatch(registerFailure(error.message));
-        setNotification("username or email already taken, or password doesn't match");
+        setNotification("name or email already taken, or password doesn't match");
       });
   };
 
@@ -65,10 +67,10 @@ const Register = () => {
           <p className="login-p">
             <input
               className="login-input"
-              type="username"
-              name="username"
-              placeholder="Username"
-              value={newUser.username}
+              type="name"
+              name="name"
+              placeholder="name"
+              value={newUser.name}
               onChange={handleChange}
               required
             />
