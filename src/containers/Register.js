@@ -19,8 +19,6 @@ const Register = () => {
     password_confirmation: '',
   });
 
-  console.log(newUser)
-
   const fetchRegistration = (name, email, password, passwordConfirmation) => {
     dispatch(registerRequest());
     const requestRegister = postRegistration(name, email, password, passwordConfirmation);
@@ -29,8 +27,9 @@ const Register = () => {
       history.push('/dashboard');
     })
       .catch(error => {
-        dispatch(registerFailure(error.message));
-        setNotification("name or email already taken, or password doesn't match");
+        let errorMessage = error.response.data.status.message
+        dispatch(registerFailure(errorMessage));
+        setNotification(errorMessage);
       });
   };
 
